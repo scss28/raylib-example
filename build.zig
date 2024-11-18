@@ -18,6 +18,8 @@ pub fn build(b: *std.Build) void {
     exe.linkLibrary(raylib.artifact("raylib"));
     exe.linkLibCpp();
 
+    b.installArtifact(exe);
+
     const run = b.addRunArtifact(exe);
     b.step("run", "Run the app").dependOn(&run.step);
 }
